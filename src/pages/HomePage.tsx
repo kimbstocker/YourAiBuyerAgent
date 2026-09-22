@@ -166,7 +166,7 @@ export default function HomePage({ runner, auth, store }: HomePageProps) {
   return (
     <div className="page home">
       <header className="hero">
-        <h1>Your AI buyer's agent</h1>
+        <h1>Welcome to Your AI buyer's agent</h1>
         <p className="sub">
           Tell it where you want to buy. It drafts the instructions an AI agent follows to watch every local agency's website and
           report only the listings you have not seen.

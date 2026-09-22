@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const LINKS = [
   { to: '/', label: 'Home' },
-  { to: '/listings', label: 'Listings' },
+  { to: '/listings', label: 'My Listings' },
 ]
 
 export default function Nav() {
@@ -31,7 +31,7 @@ export default function Nav() {
         <span aria-hidden="true" />
       </button>
       <NavLink to="/" className="brand" onClick={() => setOpen(false)}>
-        YourAiBuyerAgent
+        Your Ai Buyer Agent
       </NavLink>
       {open && (
         <nav id="main-nav" className="menu" aria-label="Main">
