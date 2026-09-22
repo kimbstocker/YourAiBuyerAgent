@@ -33,3 +33,10 @@ vi.mock('react-leaflet', () => {
 })
 
 vi.mock('leaflet/dist/leaflet.css', () => ({}))
+
+// jsdom's Blob is not accepted by Node's URL.createObjectURL. Provide a
+// predictable stub so download links can be asserted on.
+Object.assign(URL, {
+  createObjectURL: vi.fn(() => 'blob:test'),
+  revokeObjectURL: vi.fn(),
+})

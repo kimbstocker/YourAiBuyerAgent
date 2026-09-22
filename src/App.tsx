@@ -1,53 +1,25 @@
-import rawData from './data/listings.json'
-import ListingsMap from './components/ListingsMap'
-import ListingsTable from './components/ListingsTable'
-import { groupListings, formatRunSummary, type SiteData } from './lib/listings'
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import Nav from './components/Nav'
+import HomePage from './pages/HomePage'
+import ListingsPage from './pages/ListingsPage'
+import { StubAgentRunner } from './adapters/agentRunner'
+import { StubAuthProvider } from './adapters/auth'
+import { LocalStorageConfigStore } from './lib/searchConfig'
 
-const data = rawData as SiteData
+// Adapters are created once here. Replacing the stubs with real services is
+// the only change needed when a backend exists.
+const runner = new StubAgentRunner()
+const auth = new StubAuthProvider()
+const store = new LocalStorageConfigStore()
 
 export default function App() {
-  const { latestRun, seen, groups } = data
-
   return (
-    <div className="page">
-      <header className="hero">
-        <h1>{data.title}</h1>
-        <p className="sub">
-          Latest run: <strong>{latestRun.label}</strong> · {formatRunSummary(latestRun.listings.length)}
-        </p>
-        <p className="criteria">
-          {data.criteria} Focus suburbs: {data.focusSuburbs.join(', ')}. Just outside: {data.justOutsideSuburbs.join(', ')}.
-        </p>
-      </header>
-
-      <section className="map-section">
-        <ListingsMap listings={latestRun.listings} center={data.mapCenter} zoom={data.mapZoom} />
-        <p className="legend">
-          Pin numbers match the # column below. Click a pin to open the listing.
-          <span className="dot red" /> exact coordinates
-          <span className="dot orange" /> street or suburb level (approximate).
-        </p>
-      </section>
-
-      <section>
-        <h2>New listings this run</h2>
-        {latestRun.listings.length === 0 && <p>No new listings this run.</p>}
-        {groupListings(latestRun.listings, groups).map((group) => (
-          <ListingsTable key={group.id} title={group.label} rows={group.rows} numbered />
-        ))}
-      </section>
-
-      <section>
-        <h2>All listings seen so far</h2>
-        {groupListings(seen, groups).map((group) => (
-          <ListingsTable key={group.id} title={group.label} rows={group.rows} />
-        ))}
-        <p className="excluded">
-          <strong>Excluded</strong> (over $4m or wrong type): {data.excluded}
-        </p>
-      </section>
-
-      <footer>Base map © OpenStreetMap contributors. Listing data from the agency websites linked above.</footer>
-    </div>
+    <HashRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage runner={runner} auth={auth} store={store} />} />
+        <Route path="/listings" element={<ListingsPage />} />
+      </Routes>
+    </HashRouter>
   )
 }
