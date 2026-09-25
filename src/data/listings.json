@@ -11,13 +11,13 @@
     { "id": "justOutside", "label": "Just outside" }
   ],
   "latestRun": {
-    "date": "2026-09-22",
-    "label": "Tuesday 22 September 2026",
+    "date": "2026-09-25",
+    "label": "Friday 25 September 2026",
     "listings": [
-      { "num": 1, "group": "focus", "address": "Beach House (address undisclosed), Freshwater", "bbc": "5/4/2", "price": "Undisclosed (Exclusive Market Preview)", "agency": "Belle Property Dee Why", "url": "https://www.belleproperty.com/listings/beach-house-freshwater-nsw-2096-zdp9vY8V", "lat": -33.7751, "lng": 151.2845, "exact": false },
-      { "num": 2, "group": "focus", "address": "30 Woodland Street, Balgowlah Heights", "bbc": "3/2/1", "price": "Undisclosed (Auction)", "agency": "Clarke & Humel", "url": "https://clarkeandhumel.com.au/buying/for-sale/30-woodland-street/", "lat": -33.806639, "lng": 151.260407, "exact": true },
-      { "num": 3, "group": "nearMiss", "address": "3/120 Addison Road, Manly (apartment)", "bbc": "3/2/2", "price": "Undisclosed (Contact Agent)", "agency": "Whitehouse", "url": "https://www.whitehouserealestate.com.au/properties-for-sale/3-120-addison-road/1p8293", "lat": -33.80310821, "lng": 151.28933715, "exact": true },
-      { "num": 4, "group": "justOutside", "address": "27 Laurie Road, Manly Vale", "bbc": "3/2/1", "price": "Undisclosed (Exclusive Market Preview)", "agency": "Belle Property Dee Why", "url": "https://www.belleproperty.com/listings/27-laurie-road-manly-vale-nsw-2093-z5LzGXz8", "lat": -33.78674316, "lng": 151.27212524, "exact": true }
+      { "num": 1, "group": "focus", "address": "9 Violet Street, Balgowlah", "bbc": "3/3/1", "price": "Auction: Guide $3,500,000", "agency": "Clarke & Humel", "url": "https://clarkeandhumel.com.au/buying/for-sale/9-violet-street/", "lat": -33.797299, "lng": 151.256694, "exact": true },
+      { "num": 2, "group": "focus", "address": "70 Curban Street, Balgowlah Heights", "bbc": "4/3/2", "price": "Undisclosed (For Sale)", "agency": "Cunninghams", "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-heights-1p32581/", "lat": -33.803368, "lng": 151.266556, "exact": true },
+      { "num": 3, "group": "nearMiss", "address": "51/20 Bonner Avenue, Manly (apartment)", "bbc": "3/2/2", "price": "Price on Application", "agency": "The Agency Northern Beaches", "url": "https://theagency.com.au/property-apartment-nsw-manly-73101", "lat": -33.787548, "lng": 151.287186, "exact": true },
+      { "num": 4, "group": "justOutside", "address": "83 Campbell Parade, Manly Vale", "bbc": "5/3/2", "price": "Undisclosed (Auction)", "agency": "Clarke & Humel", "url": "https://clarkeandhumel.com.au/buying/for-sale/83-campbell-parade/", "lat": -33.780503, "lng": 151.26527, "exact": true }
     ]
   },
   "seen": [
@@ -88,7 +88,11 @@
     { "group": "justOutside", "address": "46 Cutler Rd, Clontarf", "bbc": "4/3/2", "price": "Auction", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/46-cutler-road-clontarf-nsw-2093-XAVgpK6j" },
     { "group": "justOutside", "address": "92 Headland Rd, North Curl Curl", "bbc": "3/2/3", "price": "Auction guide $3,000,000", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/92-headland-road-north-curl-curl-nsw-2099-rPvjRXJP" },
     { "group": "justOutside", "address": "2 Ian Lane, North Curl Curl", "bbc": "4/3/2", "price": "Undisclosed", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/2-ian-lane-north-curl-curl-nsw-2099-WBmlVOLQ" },
-    { "group": "justOutside", "address": "27 Laurie Rd, Manly Vale", "bbc": "3/2/1", "price": "Exclusive Market Preview", "agency": "Belle Property Dee Why", "url": "https://www.belleproperty.com/listings/27-laurie-road-manly-vale-nsw-2093-z5LzGXz8" }
+    { "group": "justOutside", "address": "27 Laurie Rd, Manly Vale", "bbc": "3/2/1", "price": "Exclusive Market Preview", "agency": "Belle Property Dee Why", "url": "https://www.belleproperty.com/listings/27-laurie-road-manly-vale-nsw-2093-z5LzGXz8" },
+    { "group": "focus", "address": "9 Violet Street, Balgowlah", "bbc": "3/3/1", "price": "Auction: Guide $3,500,000", "agency": "Clarke & Humel", "url": "https://clarkeandhumel.com.au/buying/for-sale/9-violet-street/" },
+    { "group": "focus", "address": "70 Curban Street, Balgowlah Heights", "bbc": "4/3/2", "price": "Undisclosed (For Sale)", "agency": "Cunninghams", "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-heights-1p32581/" },
+    { "group": "nearMiss", "address": "51/20 Bonner Avenue, Manly (apartment)", "bbc": "3/2/2", "price": "Price on Application", "agency": "The Agency Northern Beaches", "url": "https://theagency.com.au/property-apartment-nsw-manly-73101" },
+    { "group": "justOutside", "address": "83 Campbell Parade, Manly Vale", "bbc": "5/3/2", "price": "Undisclosed (Auction)", "agency": "Clarke & Humel", "url": "https://clarkeandhumel.com.au/buying/for-sale/83-campbell-parade/" }
   ],
   "excluded": "86a Griffiths St Fairlight ($4.2m); 44 Surf Rd North Curl Curl ($4.5m); 21/42 Ethel St Seaforth (unit); 71 Queenscliff Rd Queenscliff (apartment); 94 Queenscliff Rd Queenscliff (no car space); 25 Ponsonby Pde Seaforth ($4.4m); 18 Plant St Balgowlah ($4.9m+)."
 }
