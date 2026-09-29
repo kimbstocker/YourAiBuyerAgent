@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "merge-run": "node scripts/merge-run.ts"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

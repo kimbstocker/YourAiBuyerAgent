@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-29",
+  "label": "Tuesday 29 September 2026",
+  "listings": [
+    {
+      "num": 1,
+      "group": "focus",
+      "address": "65 Wanganella Street, Balgowlah",
+      "bbc": "3/2/1",
+      "price": "Undisclosed (For Sale)",
+      "agency": "Cunninghams",
+      "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p12675/",
+      "lat": -33.79516,
+      "lng": 151.25758,
+      "exact": true
+    },
+    {
+      "num": 2,
+      "group": "focus",
+      "address": "165 Condamine Street, Balgowlah",
+      "bbc": "3/2/4",
+      "price": "Undisclosed (Exclusive Market Preview)",
+      "agency": "Belle Property Seaforth",
+      "url": "https://www.belleproperty.com/listings/165-condamine-street-balgowlah-nsw-2093-zojYpbXP",
+      "lat": -33.79714,
+      "lng": 151.2639,
+      "exact": true
+    },
+    {
+      "num": 3,
+      "group": "nearMiss",
+      "address": "74 Seaview Street, Balgowlah (townhouse)",
+      "bbc": "4/2/2",
+      "price": "Undisclosed (Contact Agent)",
+      "agency": "Whitehouse",
+      "url": "https://www.whitehouserealestate.com.au/properties-for-sale/74-seaview-street/1p8248",
+      "lat": -33.79527,
+      "lng": 151.25928,
+      "exact": true
+    },
+    {
+      "num": 4,
+      "group": "nearMiss",
+      "address": "503/9 Sylvan Avenue, Balgowlah (apartment)",
+      "bbc": "3/2/2",
+      "price": "Undisclosed (Contact Agent)",
+      "agency": "Whitehouse",
+      "url": "https://www.whitehouserealestate.com.au/properties-for-sale/503-9-sylvan-avenue/1p8193",
+      "lat": -33.7934,
+      "lng": 151.26434,
+      "exact": true
+    },
+    {
+      "num": 5,
+      "group": "justOutside",
+      "address": "81 Cutler Road, Clontarf",
+      "bbc": "6/4/2",
+      "price": "Undisclosed (Auction)",
+      "agency": "MG.living",
+      "url": "https://www.mgliving.com.au/property?property_id=1738172/81-cutler-road-clontarf",
+      "lat": -33.81061,
+      "lng": 151.25635,
+      "exact": true
+    }
+  ],
+  "sitesChecked": [
+    "Cunninghams",
+    "Clarke & Humel",
+    "Whitehouse",
+    "Ray White Northern Beaches",
+    "Schwarz",
+    "The Agency Northern Beaches",
+    "Shoreline Property",
+    "MG.living",
+    "Paris Property",
+    "Belle Property"
+  ],
+  "notes": "Merged into src/data/listings.json by hand in commit a0a3364; a merge skill should treat this file as already applied."
+}

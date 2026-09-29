@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/merge-run.ts --check >/dev/null 2>&1 || echo 'House watch: pending run file(s) in runs/. Run /publish-run to merge, commit and push.'"
+          }
+        ]
+      }
+    ]
+  }
+}
