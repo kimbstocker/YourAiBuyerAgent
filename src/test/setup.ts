@@ -24,6 +24,7 @@ vi.mock('react-leaflet', () => {
           'data-position': JSON.stringify(position),
           'data-num': icon?.options?.num,
           'data-exact': String(icon?.options?.exact),
+          'data-color': icon?.options?.color,
           onClick: eventHandlers?.click,
         },
         children,

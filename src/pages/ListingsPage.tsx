@@ -24,7 +24,8 @@ export default function ListingsPage() {
         <ListingsMap listings={latestRun.listings} center={data.mapCenter} zoom={data.mapZoom} />
         <p className="legend">
           Pin numbers match the # column below. Click a pin to open the listing.
-          <span className="dot red" /> exact coordinates
+          <span className="dot red" /> house, exact coordinates
+          <span className="dot blue" /> near miss (wrong dwelling type), exact coordinates
           <span className="dot orange" /> street or suburb level (approximate).
         </p>
       </section>

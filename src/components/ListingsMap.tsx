@@ -1,18 +1,19 @@
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { hasCoords, isExactPin, pinColor, type Listing } from '../lib/listings'
+import { hasCoords, isExactPin, pinColor, type GroupId, type Listing } from '../lib/listings'
 
 const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 
 interface PinIconOptions extends L.DivIconOptions {
   num: number
   exact: boolean
+  color: string
 }
 
 /** A numbered droplet pin, matching the # column in the tables below the map. */
-function pinIcon(num: number, exact: boolean): L.DivIcon {
-  const color = pinColor(exact)
+function pinIcon(num: number, group: GroupId, exact: boolean): L.DivIcon {
+  const color = pinColor(group, exact)
   const html = `
     <svg width="44" height="58" viewBox="0 0 44 58" role="img" aria-label="Listing ${num}">
       <path d="M22 56 C22 56 4 34 4 21 A18 18 0 0 1 40 21 C40 34 22 56 22 56 Z"
@@ -29,6 +30,7 @@ function pinIcon(num: number, exact: boolean): L.DivIcon {
     tooltipAnchor: [0, -50],
     num,
     exact,
+    color,
   } as PinIconOptions)
 }
 
@@ -50,7 +52,7 @@ export default function ListingsMap({ listings, center, zoom }: ListingsMapProps
           <Marker
             key={listing.num}
             position={[listing.lat, listing.lng]}
-            icon={pinIcon(listing.num, exact)}
+            icon={pinIcon(listing.num, listing.group, exact)}
             eventHandlers={{ click: () => window.open(listing.url, '_blank', 'noopener,noreferrer') }}
           >
             <Tooltip direction="top">

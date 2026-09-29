@@ -47,6 +47,7 @@ export interface SiteData {
 }
 
 export const EXACT_COLOR = '#c81e2d'
+export const NEAR_MISS_COLOR = '#2457c5'
 export const APPROX_COLOR = '#f08c1e'
 
 /** Northern Beaches sanity box, used to catch a coordinate pasted from the wrong listing. */
@@ -67,8 +68,13 @@ export function isExactPin(listing: Listing): boolean {
   return listing.exact === true
 }
 
-export function pinColor(exact: boolean): string {
-  return exact ? EXACT_COLOR : APPROX_COLOR
+/**
+ * Pin colour: approximate positions are always orange; exact pins are blue for
+ * near misses (right suburb, wrong dwelling type) and red for everything else.
+ */
+export function pinColor(group: GroupId, exact: boolean): string {
+  if (!exact) return APPROX_COLOR
+  return group === 'nearMiss' ? NEAR_MISS_COLOR : EXACT_COLOR
 }
 
 export function hasCoords(listing: Listing): listing is Listing & { lat: number; lng: number } {

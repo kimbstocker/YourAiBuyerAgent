@@ -73,9 +73,15 @@ describe('isExactPin', () => {
 })
 
 describe('pinColor', () => {
-  it('uses red for exact and orange for approximate positions', () => {
-    expect(pinColor(true)).toBe('#c81e2d')
-    expect(pinColor(false)).toBe('#f08c1e')
+  it('uses red for exact focus and just-outside pins, blue for exact near misses', () => {
+    expect(pinColor('focus', true)).toBe('#c81e2d')
+    expect(pinColor('justOutside', true)).toBe('#c81e2d')
+    expect(pinColor('nearMiss', true)).toBe('#2457c5')
+  })
+
+  it('uses orange for every approximate pin, whatever its group', () => {
+    expect(pinColor('focus', false)).toBe('#f08c1e')
+    expect(pinColor('nearMiss', false)).toBe('#f08c1e')
   })
 })
 

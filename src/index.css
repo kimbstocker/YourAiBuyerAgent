@@ -27,6 +27,7 @@ body { margin: 0; }
 .legend { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
 .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin: 0 4px 0 10px; vertical-align: middle; }
 .dot.red { background: #c81e2d; }
+.dot.blue { background: #2457c5; }
 .dot.orange { background: #f08c1e; }
 
 h2 { color: var(--navy); font-size: 20px; margin: 28px 0 8px; }

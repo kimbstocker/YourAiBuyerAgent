@@ -29,7 +29,15 @@ describe('ListingsMap', () => {
     render(<ListingsMap listings={rows} center={[-33.79, 151.268]} zoom={14} />)
     const pins = screen.getAllByTestId('listing-pin')
     expect(pins[0]).toHaveAttribute('data-exact', 'false')
+    expect(pins[0]).toHaveAttribute('data-color', '#f08c1e')
     expect(pins[1]).toHaveAttribute('data-exact', 'true')
+    expect(pins[1]).toHaveAttribute('data-color', '#c81e2d')
+  })
+
+  it('colours exact near-miss pins blue so they stand out from focus listings', () => {
+    const nearMiss = [{ ...rows[1], num: 3, group: 'nearMiss' as const, address: '2/5 Orchard St, Balgowlah (duplex)' }]
+    render(<ListingsMap listings={nearMiss} center={[-33.79, 151.268]} zoom={14} />)
+    expect(screen.getByTestId('listing-pin')).toHaveAttribute('data-color', '#2457c5')
   })
 
   it('opens the agency listing in a new tab when a pin is clicked', async () => {
