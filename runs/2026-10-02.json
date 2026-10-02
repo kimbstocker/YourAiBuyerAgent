@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-02",
+  "label": "Friday 2 October 2026",
+  "listings": [
+    {"num": 1, "group": "focus", "address": "20 Vista Avenue, Balgowlah Heights", "bbc": "4/3/2", "price": "Undisclosed (Exclusive Market Preview)", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/20-vista-avenue-balgowlah-heights-nsw-2093-GKzDQkQ5", "lat": -33.80718231, "lng": 151.26237487, "exact": true},
+    {"num": 2, "group": "focus", "address": "27 Dobroyd Road, Balgowlah Heights", "bbc": "4/3/2", "price": "Undisclosed (Exclusive Market Preview)", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/27-dobroyd-road-balgowlah-heights-nsw-2093-zlWWObZl", "lat": -33.80704498, "lng": 151.26324462, "exact": true},
+    {"num": 3, "group": "nearMiss", "address": "10/120 North Steyne, Manly (apartment)", "bbc": "3/3/3", "price": "Undisclosed (Contact Agent)", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/10-120-north-steyne-manly-nsw-2095-RJKjz2Vp", "lat": -33.78864288, "lng": 151.28683471, "exact": true},
+    {"num": 4, "group": "justOutside", "address": "5 Linkmead Avenue, Clontarf", "bbc": "4/4/2", "price": "Undisclosed (Exclusive Market Preview)", "agency": "Belle Property", "url": "https://www.belleproperty.com/listings/5-linkmead-avenue-clontarf-nsw-2093-1R5awXbR", "lat": -33.80143356, "lng": 151.25128173, "exact": true}
+  ],
+  "sitesChecked": ["Cunninghams", "Clarke & Humel", "Whitehouse", "Ray White Northern Beaches", "Schwarz", "The Agency Northern Beaches", "Shoreline Property", "MG.living", "Paris Property", "Belle Property"],
+  "notes": "Paris Property site was unreachable (timeouts in both WebFetch and Chrome, retried) so it was not checked this run. Belle 'Address on request, Balgowlah' 5/3/2 (oDYL6L7W) treated as the already-seen undisclosed Balgowlah 5/3/2 listing (62P49537) and not re-reported."
+}
