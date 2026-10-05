@@ -19,7 +19,7 @@ The scheduled house watch never edits code. It writes one file per run into `run
 
 3. Merge:
    `node scripts/merge-run.ts`
-   The script applies pending files oldest first, replaces `latestRun`, appends unseen listings (matched by `url`) to `seen`, and rewrites `listings.json` in the repo's one-object-per-line format so the diff is only the changed lines. It refuses a run whose numbering is not continuous from 1 or whose coordinates fall outside the Northern Beaches box; if it throws, fix the run file (never the script) and rerun.
+   The script applies pending files oldest first, replaces `latestRun`, applies any `statusUpdates` (sold / withdrawn / price changes) to the matching `seen` rows, appends unseen listings (matched by `url`) to `seen`, and rewrites `listings.json` in the repo's one-object-per-line format so the diff is only the changed lines. It refuses a run whose numbering is not continuous from 1 or whose coordinates fall outside the Northern Beaches box; if it throws, fix the run file (never the script) and rerun.
 
 4. Verify. All three must pass before committing:
    `npm test` (the data suite `src/data/listings.test.ts` is the one that matters; `Nav.test.tsx` has three known failures on main that are unrelated, do not block on them until they are fixed)
@@ -32,7 +32,7 @@ The scheduled house watch never edits code. It writes one file per run into `run
    git commit -m "data: house watch run YYYY-MM-DD (N new listings)"
    git push origin main
    ```
-   Use the date and count from the merge output. When several runs were merged in one go, list each date in the body.
+   Use the date and count from the merge output; for a run with no new listings but status updates, say `data: house watch run YYYY-MM-DD (status check, N updates)`. When several runs were merged in one go, list each date in the body.
 
 6. Report in one or two lines: which run file(s) were merged, how many listings were added, the commit hash, and that GitHub Pages will show it at https://kimbstocker.github.io/YourAiBuyerAgent/#/listings within a couple of minutes.
 

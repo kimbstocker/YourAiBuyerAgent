@@ -94,6 +94,41 @@ describe('applyRun', () => {
     expect(() => applyRun(base(), bad)).toThrow(/numbered/i)
   })
 
+  it('applies status updates to seen listings by url, keeping the rest of the row', () => {
+    const { data, applied, updated } = applyRun(
+      base(),
+      run({
+        listings: [],
+        statusUpdates: [
+          { url: 'https://example.com/1', status: 'sold', soldPrice: '$3,565,000', checked: '2026-10-04' },
+        ],
+      }),
+    )
+    expect(applied).toBe(true)
+    expect(updated).toBe(1)
+    expect(data.seen[0]).toMatchObject({
+      address: '1 Test Street, Manly',
+      price: 'Auction',
+      status: 'sold',
+      soldPrice: '$3,565,000',
+      statusChecked: '2026-10-04',
+    })
+  })
+
+  it('replaces the price text when a status update carries a new guide', () => {
+    const { data } = applyRun(
+      base(),
+      run({ listings: [], statusUpdates: [{ url: 'https://example.com/1', status: 'available', price: 'For sale $2,749,000', checked: '2026-10-04' }] }),
+    )
+    expect(data.seen[0].price).toBe('For sale $2,749,000')
+    expect(data.seen[0].status).toBe('available')
+  })
+
+  it('rejects a status update whose url is not in seen, so a typo cannot be silently dropped', () => {
+    const bad = run({ listings: [], statusUpdates: [{ url: 'https://example.com/nope', status: 'sold' }] })
+    expect(() => applyRun(base(), bad)).toThrow(/not in seen/i)
+  })
+
   it('leaves every other key untouched', () => {
     const { data } = applyRun(base(), run())
     const { latestRun: _a, seen: _b, ...rest } = data

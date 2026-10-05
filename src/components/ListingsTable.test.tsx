@@ -65,4 +65,14 @@ describe('ListingsTable', () => {
     expect(screen.getByText('Undisclosed (Auction)')).toBeInTheDocument()
     expect(screen.getByText('Clarke & Humel')).toBeInTheDocument()
   })
+
+  it('adds a Status column only when asked, with the sold price in it', () => {
+    const sold = [{ ...rows[0], status: 'sold' as const, soldPrice: '$3,565,000' }, rows[1]]
+    render(<ListingsTable title="Focus suburbs" rows={sold} showStatus />)
+    const headers = screen.getAllByRole('columnheader').map((h) => h.textContent)
+    expect(headers).toEqual(['Address', 'Bed/Bath/Car', 'Price', 'Status', 'Agency', 'Link'])
+    expect(screen.getByRole('cell', { name: 'Sold $3,565,000' })).toBeInTheDocument()
+    expect(screen.getByRole('cell', { name: 'Available' })).toBeInTheDocument()
+    expect(screen.getByRole('cell', { name: 'Sold $3,565,000' }).closest('tr')).toHaveClass('sold')
+  })
 })

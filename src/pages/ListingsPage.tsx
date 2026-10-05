@@ -3,7 +3,7 @@ import ListingsMap from '../components/ListingsMap'
 import ListingsTable from '../components/ListingsTable'
 import { groupListings, formatRunSummary, type SiteData } from '../lib/listings'
 
-const data = rawData as SiteData
+const data = rawData as unknown as SiteData
 
 export default function ListingsPage() {
   const { latestRun, seen, groups } = data
@@ -41,7 +41,7 @@ export default function ListingsPage() {
       <section>
         <h2>All listings seen so far</h2>
         {groupListings(seen, groups).map((group) => (
-          <ListingsTable key={group.id} title={group.label} rows={group.rows} />
+          <ListingsTable key={group.id} title={group.label} rows={group.rows} showStatus />
         ))}
         <p className="excluded">
           <strong>Excluded</strong> (over $4m or wrong type): {data.excluded}

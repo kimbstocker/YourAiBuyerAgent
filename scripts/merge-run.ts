@@ -33,7 +33,7 @@ for (const file of files) {
   }
   data = result.data
   changed = true
-  console.log(`${check ? 'Would merge' : 'Merged'} ${file}: ${run.listings.length} listing(s) in run, ${result.added} added to seen.`)
+  console.log(`${check ? 'Would merge' : 'Merged'} ${file}: ${run.listings.length} listing(s) in run, ${result.added} added to seen, ${result.updated} status update(s).`)
 }
 
 if (check) process.exit(changed ? 1 : 0)

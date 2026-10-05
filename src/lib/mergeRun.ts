@@ -1,4 +1,4 @@
-import { validateRun, type Listing, type SiteData } from './listings.ts'
+import { validateRun, type Listing, type ListingStatus, type SiteData } from './listings.ts'
 
 /** One run file dropped into runs/ by the scheduled house watch. See runs/README.md. */
 export interface RunFile {
@@ -7,6 +7,18 @@ export interface RunFile {
   listings: Listing[]
   sitesChecked?: string[]
   notes?: string
+  /** Re-checks of listings already in seen, matched by url. */
+  statusUpdates?: StatusUpdate[]
+}
+
+export interface StatusUpdate {
+  url: string
+  status: ListingStatus
+  /** New price text when the guide changed; omitted keeps the existing one. */
+  price?: string
+  soldPrice?: string
+  /** ISO date of the check; defaults to the run date. */
+  checked?: string
 }
 
 export interface ApplyResult {
@@ -15,6 +27,8 @@ export interface ApplyResult {
   applied: boolean
   /** Listings appended to seen. */
   added: number
+  /** Seen listings whose status was updated. */
+  updated: number
 }
 
 type SeenListing = Pick<Listing, 'group' | 'address' | 'bbc' | 'price' | 'agency' | 'url'>
@@ -29,20 +43,33 @@ function toSeen(l: Listing): SeenListing {
  * input is not mutated.
  */
 export function applyRun(input: SiteData, run: RunFile): ApplyResult {
-  if (run.date <= input.latestRun.date) return { data: input, applied: false, added: 0 }
+  if (run.date <= input.latestRun.date) return { data: input, applied: false, added: 0, updated: 0 }
   const problems = validateRun(run.listings)
   const nums = run.listings.map((l) => l.num).sort((a, b) => a - b)
   if (nums.some((n, i) => n !== i + 1)) problems.push(`Listings must be numbered continuously from 1, got ${nums.join(', ')}`)
+  const seenUrls = new Set(input.seen.map((s) => s.url))
+  const updates = new Map((run.statusUpdates ?? []).map((u) => [u.url, u]))
+  for (const u of updates.values()) {
+    if (!seenUrls.has(u.url)) problems.push(`Status update for a url not in seen: ${u.url}`)
+  }
   if (problems.length > 0) throw new Error(`Run ${run.date} is not publishable: ${problems.join('; ')}`)
 
-  const seenUrls = new Set(input.seen.map((s) => s.url))
+  const seen = input.seen.map((s) => {
+    const u = updates.get(s.url)
+    if (!u) return s
+    const next: Listing = { ...s, status: u.status, statusChecked: u.checked ?? run.date }
+    if (u.price) next.price = u.price
+    if (u.soldPrice) next.soldPrice = u.soldPrice
+    else delete next.soldPrice
+    return next
+  })
   const additions = run.listings.filter((l) => !seenUrls.has(l.url)).map(toSeen)
   const data: SiteData = {
     ...input,
     latestRun: { date: run.date, label: run.label, listings: run.listings.map((l) => ({ ...l })) },
-    seen: [...input.seen, ...(additions as Listing[])],
+    seen: [...seen, ...(additions as Listing[])],
   }
-  return { data, applied: true, added: additions.length }
+  return { data, applied: true, added: additions.length, updated: updates.size }
 }
 
 const j = (v: unknown): string =>

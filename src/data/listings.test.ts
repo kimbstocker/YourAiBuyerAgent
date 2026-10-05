@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import rawData from './listings.json'
 import { validateRun, type SiteData, type GroupId } from '../lib/listings'
 
-const data = rawData as SiteData
+const data = rawData as unknown as SiteData
 const groupIds = new Set<GroupId>(data.groups.map((g) => g.id))
 
 describe('listings.json', () => {
@@ -40,5 +40,11 @@ describe('listings.json', () => {
 
   it('has a run date in ISO form', () => {
     expect(data.latestRun.date).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+  })
+
+  it('only uses known status values and gives sold listings no bogus guide', () => {
+    const ok = new Set(['available', 'underOffer', 'sold', 'withdrawn', undefined])
+    const bad = data.seen.filter((r) => !ok.has(r.status)).map((r) => `${r.address} (${r.status})`)
+    expect(bad).toEqual([])
   })
 })

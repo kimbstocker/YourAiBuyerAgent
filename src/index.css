@@ -100,3 +100,6 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 @media (max-width: 640px) {
   .form-grid { grid-template-columns: 1fr; }
 }
+
+tr.sold td, tr.withdrawn td { color: #777; }
+tr.sold td:first-child, tr.withdrawn td:first-child { text-decoration: line-through; }

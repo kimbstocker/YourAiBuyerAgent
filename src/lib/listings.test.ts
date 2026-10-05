@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
+  statusLabel,
   groupListings,
   isExactPin,
   pinColor,
@@ -119,5 +120,20 @@ describe('formatRunSummary', () => {
   it('uses the plural for none and for many', () => {
     expect(formatRunSummary(0)).toBe('0 new listings')
     expect(formatRunSummary(4)).toBe('4 new listings')
+  })
+})
+
+describe('statusLabel', () => {
+  const row = { num: 1, group: 'focus', address: 'x', bbc: '3/2/1', price: 'Auction', agency: 'a', url: 'https://e' } as Listing
+  it('treats a listing with no status as available', () => {
+    expect(statusLabel(row)).toBe('Available')
+  })
+  it('shows the sold price when one is known, otherwise says undisclosed', () => {
+    expect(statusLabel({ ...row, status: 'sold', soldPrice: '$3,565,000' })).toBe('Sold $3,565,000')
+    expect(statusLabel({ ...row, status: 'sold' })).toBe('Sold (price undisclosed)')
+  })
+  it('labels the other states plainly', () => {
+    expect(statusLabel({ ...row, status: 'underOffer' })).toBe('Under offer')
+    expect(statusLabel({ ...row, status: 'withdrawn' })).toBe('Withdrawn')
   })
 })

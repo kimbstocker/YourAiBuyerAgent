@@ -21,6 +21,28 @@ export interface Listing {
   lng?: number
   /** True when lat/lng came from the listing itself rather than a suburb lookup. */
   exact?: boolean
+  /** Sale status from the last check; absent means available. */
+  status?: ListingStatus
+  /** Sold price as published (Domain, agency), e.g. "$3,565,000"; absent when undisclosed. */
+  soldPrice?: string
+  /** ISO date of the last status check. */
+  statusChecked?: string
+}
+
+export type ListingStatus = 'available' | 'underOffer' | 'sold' | 'withdrawn'
+
+/** Human label for the Status column of the seen tables. */
+export function statusLabel(listing: Pick<Listing, 'status' | 'soldPrice'>): string {
+  switch (listing.status) {
+    case 'sold':
+      return listing.soldPrice ? `Sold ${listing.soldPrice}` : 'Sold (price undisclosed)'
+    case 'underOffer':
+      return 'Under offer'
+    case 'withdrawn':
+      return 'Withdrawn'
+    default:
+      return 'Available'
+  }
 }
 
 export interface GroupedListings extends Group {

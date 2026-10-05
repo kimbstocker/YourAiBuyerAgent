@@ -22,6 +22,10 @@ Each Northern Beaches house watch run drops one file here: `runs/YYYY-MM-DD.json
       "exact": true
     }
   ],
+  "statusUpdates": [
+    { "url": "https://clarkeandhumel.com.au/buying/for-sale/30-woodland-street/", "status": "sold", "soldPrice": "$3,565,000", "checked": "2026-10-04" },
+    { "url": "https://raywhitenorthernbeaches.com.au/.../3559699", "status": "available", "price": "For sale $2,749,000", "checked": "2026-10-04" }
+  ],
   "sitesChecked": ["Cunninghams", "..."],
   "notes": "optional free text (sites down, pre-existing test failures, etc.)"
 }
@@ -31,6 +35,7 @@ Each Northern Beaches house watch run drops one file here: `runs/YYYY-MM-DD.json
 - `group` is one of `focus`, `nearMiss`, `justOutside`.
 - `exact` is true when the coordinates came from the agency page, false when geocoded from the street.
 - `listings` is `[]` when the run found nothing new.
+- `statusUpdates` (optional) re-checks listings already in `seen`, matched by `url`. `status` is `available`, `underOffer`, `sold` or `withdrawn` (agency page gone or marked off market, no sale recorded yet); `price` replaces the price text when the guide changed; `soldPrice` is the published sale price (omit when undisclosed); `checked` defaults to the run date. A url that is not in `seen` makes the merge refuse the file.
 
 ## How a run gets published
 
@@ -38,9 +43,10 @@ The `/publish-run` Claude Code skill (`.claude/skills/publish-run/SKILL.md`) dri
 
 1. Picks every file here dated after `latestRun.date` in `src/data/listings.json`, oldest first (`YYYY-MM-DD-2.json` sorts after `YYYY-MM-DD.json`).
 2. Sets `latestRun.date`, `latestRun.label` and `latestRun.listings` from the file.
-3. Appends each listing to `seen` as `{group, address, bbc, price, agency, url}` unless its `url` is already present.
-4. Rewrites `listings.json` in its one-object-per-line format so the diff stays small.
-5. Refuses a run whose numbering is not continuous from 1 or whose coordinates are outside the Northern Beaches box.
+3. Applies every `statusUpdates` entry to the matching `seen` row (`status`, `soldPrice`, `statusChecked`, and `price` when given).
+4. Appends each listing to `seen` as `{group, address, bbc, price, agency, url}` unless its `url` is already present.
+5. Rewrites `listings.json` in its one-object-per-line format so the diff stays small.
+6. Refuses a run whose numbering is not continuous from 1 or whose coordinates are outside the Northern Beaches box.
 
 The skill then runs `npm test` and `npm run build`, commits as `data: house watch run YYYY-MM-DD (N new listings)` and pushes `main`.
 
