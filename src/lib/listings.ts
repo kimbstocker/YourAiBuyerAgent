@@ -60,6 +60,8 @@ export interface SiteData {
   criteria: string
   focusSuburbs: string[]
   justOutsideSuburbs: string[]
+  /** Suburbs shown first in the seen-so-far tables. */
+  prioritySuburbs?: string[]
   mapCenter: [number, number]
   mapZoom: number
   groups: Group[]
@@ -135,4 +137,58 @@ export function validateRun(listings: Listing[]): string[] {
 
 export function formatRunSummary(count: number): string {
   return `${count} new listing${count === 1 ? '' : 's'}`
+}
+
+export interface SuburbListings {
+  suburb: string
+  rows: Listing[]
+}
+
+/** Suburb from an address: the text after the last comma, with any bracketed note removed. */
+export function suburbOf(address: string): string {
+  const base = address.replace(/\s*\([^)]*\)\s*$/, '').trim()
+  const idx = base.lastIndexOf(',')
+  return (idx >= 0 ? base.slice(idx + 1) : base).trim()
+}
+
+/**
+ * Suburb table order for the seen section: the priority suburbs first, then
+ * the remaining focus suburbs, then the just-outside suburbs, without repeats.
+ */
+export function suburbOrder(priority: string[], focus: string[], justOutside: string[]): string[] {
+  const out: string[] = []
+  for (const s of [...priority, ...focus, ...justOutside]) {
+    if (!out.includes(s)) out.push(s)
+  }
+  return out
+}
+
+const isClosed = (l: Listing) => l.status === 'sold' || l.status === 'withdrawn'
+
+/**
+ * Bucket listings by suburb in the given order (unknown suburbs follow,
+ * alphabetically). Within a suburb houses come before near misses, and
+ * available rows before sold or withdrawn ones. Empty suburbs are dropped.
+ */
+export function groupBySuburb(listings: Listing[], order: string[]): SuburbListings[] {
+  const buckets = new Map<string, Listing[]>()
+  for (const l of listings) {
+    const s = suburbOf(l.address)
+    const rows = buckets.get(s) ?? []
+    rows.push(l)
+    buckets.set(s, rows)
+  }
+  const known = order.filter((s) => buckets.has(s))
+  const unknown = [...buckets.keys()].filter((s) => !order.includes(s)).sort((a, b) => a.localeCompare(b))
+  const rank = (l: Listing) => (l.group === 'nearMiss' ? 2 : 0) + (isClosed(l) ? 1 : 0)
+  return [...known, ...unknown].map((suburb) => ({
+    suburb,
+    rows: [...(buckets.get(suburb) as Listing[])].sort((a, b) => rank(a) - rank(b)),
+  }))
+}
+
+/** Address for display: near misses get a "(near miss)" tag unless the address already carries a bracketed note. */
+export function displayAddress(listing: Pick<Listing, 'address' | 'group'>): string {
+  if (listing.group !== 'nearMiss' || /\(/.test(listing.address)) return listing.address
+  return `${listing.address} (near miss)`
 }

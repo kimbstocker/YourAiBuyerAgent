@@ -1,4 +1,4 @@
-import { statusLabel, type Listing } from '../lib/listings'
+import { statusLabel, displayAddress, type Listing } from '../lib/listings'
 
 interface ListingsTableProps {
   title: string
@@ -30,7 +30,7 @@ export default function ListingsTable({ title, rows, numbered = false, showStatu
             {rows.map((row, i) => (
               <tr key={`${row.address}-${row.url}`} className={[i % 2 ? 'alt' : '', row.status === 'sold' || row.status === 'withdrawn' ? row.status : ''].filter(Boolean).join(' ')}>
                 {numbered && <td className="num">{row.num}</td>}
-                <td>{row.address}</td>
+                <td>{displayAddress(row)}</td>
                 <td>{row.bbc}</td>
                 <td>{row.price}</td>
                 {showStatus && <td>{statusLabel(row)}</td>}

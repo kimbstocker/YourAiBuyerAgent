@@ -6,6 +6,9 @@ import {
   pinColor,
   validateRun,
   formatRunSummary,
+  groupBySuburb,
+  suburbOrder,
+  displayAddress,
   type Listing,
   type GroupId,
 } from './listings'
@@ -135,5 +138,71 @@ describe('statusLabel', () => {
   it('labels the other states plainly', () => {
     expect(statusLabel({ ...row, status: 'underOffer' })).toBe('Under offer')
     expect(statusLabel({ ...row, status: 'withdrawn' })).toBe('Withdrawn')
+  })
+})
+
+describe('groupBySuburb', () => {
+  const order = ['Freshwater', 'North Manly', 'Manly', 'Balgowlah', 'Seaforth']
+
+  it('puts suburbs in the configured order with Freshwater and North Manly first', () => {
+    const rows = [
+      listing({ num: 1, address: '5 A St, Seaforth', group: 'justOutside' }),
+      listing({ num: 2, address: '6 B St, Manly' }),
+      listing({ num: 3, address: '7 C St, North Manly' }),
+      listing({ num: 4, address: '8 D St, Freshwater' }),
+    ]
+    expect(groupBySuburb(rows, order).map((g) => g.suburb)).toEqual(['Freshwater', 'North Manly', 'Manly', 'Seaforth'])
+  })
+
+  it('derives the suburb from the text after the last comma, ignoring a bracketed note', () => {
+    const rows = [listing({ address: '3/120 Addison Rd, Manly (apartment)', group: 'nearMiss' })]
+    expect(groupBySuburb(rows, order).map((g) => g.suburb)).toEqual(['Manly'])
+  })
+
+  it('appends unknown suburbs alphabetically after the configured ones', () => {
+    const rows = [
+      listing({ num: 1, address: '1 X St, Zetland' }),
+      listing({ num: 2, address: '1 Y St, Cromer' }),
+      listing({ num: 3, address: '1 Z St, Manly' }),
+    ]
+    expect(groupBySuburb(rows, order).map((g) => g.suburb)).toEqual(['Manly', 'Cromer', 'Zetland'])
+  })
+
+  it('within a suburb lists houses before near misses and available before sold or withdrawn', () => {
+    const rows = [
+      listing({ num: 1, address: '1 A St, Manly', group: 'nearMiss', status: 'sold' }),
+      listing({ num: 2, address: '2 A St, Manly', group: 'focus', status: 'withdrawn' }),
+      listing({ num: 3, address: '3 A St, Manly', group: 'nearMiss' }),
+      listing({ num: 4, address: '4 A St, Manly', group: 'focus' }),
+    ]
+    expect(groupBySuburb(rows, order)[0].rows.map((r) => r.num)).toEqual([4, 2, 3, 1])
+  })
+
+  it('keeps every row exactly once and drops empty suburbs', () => {
+    const rows = [listing({ num: 1, address: '1 A St, Manly' }), listing({ num: 2, address: '2 A St, Manly' })]
+    const grouped = groupBySuburb(rows, order)
+    expect(grouped).toHaveLength(1)
+    expect(grouped.flatMap((g) => g.rows)).toHaveLength(2)
+  })
+})
+
+describe('suburbOrder', () => {
+  it('starts with the priority suburbs, then the remaining focus suburbs, then just outside', () => {
+    expect(suburbOrder(['Freshwater', 'North Manly'], ['Manly', 'North Manly', 'Freshwater'], ['Seaforth'])).toEqual([
+      'Freshwater',
+      'North Manly',
+      'Manly',
+      'Seaforth',
+    ])
+  })
+})
+
+describe('displayAddress', () => {
+  it('tags a near miss that has no bracketed type note', () => {
+    expect(displayAddress(listing({ address: '1 A St, Manly', group: 'nearMiss' }))).toBe('1 A St, Manly (near miss)')
+  })
+  it('leaves houses and already-annotated near misses alone', () => {
+    expect(displayAddress(listing({ address: '1 A St, Manly' }))).toBe('1 A St, Manly')
+    expect(displayAddress(listing({ address: '1 A St, Manly (apartment)', group: 'nearMiss' }))).toBe('1 A St, Manly (apartment)')
   })
 })

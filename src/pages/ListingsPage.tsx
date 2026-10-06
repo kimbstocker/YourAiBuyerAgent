@@ -1,12 +1,14 @@
 import rawData from '../data/listings.json'
 import ListingsMap from '../components/ListingsMap'
 import ListingsTable from '../components/ListingsTable'
-import { groupListings, formatRunSummary, type SiteData } from '../lib/listings'
+import { groupListings, groupBySuburb, suburbOrder, formatRunSummary, type SiteData } from '../lib/listings'
 
 const data = rawData as unknown as SiteData
 
 export default function ListingsPage() {
   const { latestRun, seen, groups } = data
+  const seenOrder = suburbOrder(data.prioritySuburbs ?? [], data.focusSuburbs, data.justOutsideSuburbs)
+  const focusSet = new Set(data.focusSuburbs)
 
   return (
     <div className="page">
@@ -40,8 +42,13 @@ export default function ListingsPage() {
 
       <section>
         <h2>All listings seen so far</h2>
-        {groupListings(seen, groups).map((group) => (
-          <ListingsTable key={group.id} title={group.label} rows={group.rows} showStatus />
+        {groupBySuburb(seen, seenOrder).map((group) => (
+          <ListingsTable
+            key={group.suburb}
+            title={`${group.suburb} (${focusSet.has(group.suburb) ? 'focus suburb' : 'just outside'})`}
+            rows={group.rows}
+            showStatus
+          />
         ))}
         <p className="excluded">
           <strong>Excluded</strong> (over $4m or wrong type): {data.excluded}

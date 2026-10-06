@@ -3,6 +3,7 @@
   "criteria": "House only, 3+ bed, 2+ bath, 1+ car, $4,000,000 or under (undisclosed prices kept).",
   "focusSuburbs": ["Manly", "North Manly", "Balgowlah", "North Balgowlah", "Balgowlah Heights", "Fairlight", "Freshwater"],
   "justOutsideSuburbs": ["Seaforth", "Clontarf", "Queenscliff", "North Curl Curl", "Manly Vale"],
+  "prioritySuburbs": ["Freshwater", "North Manly"],
   "mapCenter": [-33.79, 151.268],
   "mapZoom": 14,
   "groups": [
