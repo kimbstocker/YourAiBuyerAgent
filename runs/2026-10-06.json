@@ -1,0 +1,383 @@
+{
+ "date": "2026-10-06",
+ "label": "Tuesday 6 October 2026",
+ "listings": [
+  {
+   "num": 1,
+   "group": "focus",
+   "address": "15 Valley Road, Balgowlah Heights",
+   "bbc": "3/2/1",
+   "price": "Undisclosed (Auction 10 Nov)",
+   "agency": "Belle Property",
+   "url": "https://www.belleproperty.com/listings/15-valley-road-balgowlah-heights-nsw-2093-Lrzo0Map",
+   "lat": -33.80396,
+   "lng": 151.26422,
+   "exact": true
+  },
+  {
+   "num": 2,
+   "group": "nearMiss",
+   "address": "6 Willyama Avenue, Fairlight (townhouse, Torrens title)",
+   "bbc": "3/2/3",
+   "price": "Undisclosed (Auction 31 Oct)",
+   "agency": "The Agency",
+   "url": "https://theagency.com.au/property-townhouse-nsw-fairlight-89356",
+   "lat": -33.79651,
+   "lng": 151.26949,
+   "exact": true
+  },
+  {
+   "num": 3,
+   "group": "justOutside",
+   "address": "7 Molong Street, North Curl Curl",
+   "bbc": "5/3/2",
+   "price": "Undisclosed (Contact agent)",
+   "agency": "Belle Property",
+   "url": "https://www.belleproperty.com/listings/7-molong-street-north-curl-curl-nsw-2099-Mw9lZ9Dy",
+   "lat": -33.76409,
+   "lng": 151.3,
+   "exact": true
+  }
+ ],
+ "statusUpdates": [
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/clontarf-2093/house/3439721",
+   "status": "sold",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/3-120-addison-road/1p8293",
+   "status": "withdrawn",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/66-johnson-street-freshwater-nsw-2096-WmOe0lPZ",
+   "status": "withdrawn",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-manly-vale-1p19909/",
+   "status": "available",
+   "price": "Auction",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p31503/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p32220/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/12-maretimo-street/1p8078",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-north-balgowlah-1p30037/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/north-balgowlah-2093/house/3551116",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.schwarzre.com.au/property-listings/9-waiwera-avenue-north-manly/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/freshwater-2096/house/3559699",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-freshwater-1p19906/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/18a-willyama-avenue-fairlight-nsw-2094-npRKl0qe",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/2-seaview-street-balgowlah-nsw-2093-mARJkBgA",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/62P49537",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/23-the-drive-freshwater-nsw-2096-pbAyqxDb",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/25-carrington-parade-freshwater-nsw-2096-pJKBpLD7",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/63-oliver-street-freshwater-nsw-2096-VB3XWOoG",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/55-bower-street-manly-nsw-2095-3kLbGjPW",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/10-the-crescent-manly-nsw-2095-O7K24kQn",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-heights-1p30239/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/44-woodland-street-balgowlah-heights-nsw-2093-zdMmoxAd",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/beach-house-freshwater-nsw-2096-zdp9vY8V",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p32387/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/901-1-raglan-street/1p7807",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/24-140-north-steyne-manly-nsw-2095-Vy3DbqkZ",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/16-140-north-steyne-manly-nsw-2095-Jr06Vj98",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/fairlight-2094/apartment/3580837",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/1-2-52-54-brighton-street-freshwater-nsw-2096-1Q4ayARq",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/12-thomas-street/1p8212",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/3-467-sydney-road/1p8203",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/14-ethel-street-balgowlah-nsw-2093-q6wqxbK2",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/16-upper-gilbert-street-manly-nsw-2095-vGZdvZBJ",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/2-43-upper-clifford-avenue-fairlight-nsw-2094-XYgZwKEQ",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/25-25-addison-road-manly-nsw-2095-zNVyR9gA",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/1-27-waine-street-freshwater-nsw-2096-AO0apdEq",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/3-52-54-brighton-street-freshwater-nsw-2096-Lb0xQwAb",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/2a-alto-avenue/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/33-quinlan-parade/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-seaforth-1p31417/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/127-frenchs-forest-road/1p8238",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/47-baringa-avenue/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/seaforth-2092/house/3563136",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/10-alma-street/1p8265",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-north-curl-curl-1p31462/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/94-headland-road/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/6-sangrado-street-seaforth-nsw-2092-yABzLEqA",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/2b-fromelles-avenue-seaforth-nsw-2092-z4KapyBO",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/21-alma-street-clontarf-nsw-2093-MeV9VpqQ",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/92-headland-road-north-curl-curl-nsw-2099-rPvjRXJP",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/2-ian-lane-north-curl-curl-nsw-2099-WBmlVOLQ",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/27-laurie-road-manly-vale-nsw-2093-z5LzGXz8",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/9-violet-street/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-heights-1p32581/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://theagency.com.au/property-apartment-nsw-manly-73101",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/83-campbell-parade/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p12675/",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/165-condamine-street-balgowlah-nsw-2093-zojYpbXP",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/74-seaview-street/1p8248",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/503-9-sylvan-avenue/1p8193",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.mgliving.com.au/property?property_id=1738172/81-cutler-road-clontarf",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/20-vista-avenue-balgowlah-heights-nsw-2093-GKzDQkQ5",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/27-dobroyd-road-balgowlah-heights-nsw-2093-zlWWObZl",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/10-120-north-steyne-manly-nsw-2095-RJKjz2Vp",
+   "status": "available",
+   "checked": "2026-10-06"
+  },
+  {
+   "url": "https://www.belleproperty.com/listings/5-linkmead-avenue-clontarf-nsw-2093-1R5awXbR",
+   "status": "available",
+   "checked": "2026-10-06"
+  }
+ ],
+ "sitesChecked": [
+  "Cunninghams",
+  "Clarke & Humel",
+  "Whitehouse",
+  "Ray White Northern Beaches",
+  "Schwarz",
+  "The Agency Northern Beaches",
+  "Shoreline Property",
+  "MG.living",
+  "Paris Property",
+  "Belle Property"
+ ],
+ "notes": "All ten sites reachable. 13 Beatrice St Clontarf shows Sold on 23 Sep 2026 on Ray White, price not published (Domain has no sale entry yet). 3/120 Addison Rd Manly (Whitehouse) now 404 and 66 Johnson St Freshwater (Belle) now redirects to not-found, no sale recorded on Domain, marked withdrawn. 38 Kenneth Rd Manly Vale changed from Contact agent to Auction. 141 Balgowlah Rd (Clarke & Humel) remains Off Market and 30 Woodland St still shows SOLD, both skipped as already tagged."
+}
