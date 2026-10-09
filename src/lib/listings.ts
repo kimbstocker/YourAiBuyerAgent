@@ -53,6 +53,8 @@ export interface RunData {
   date: string
   label: string
   listings: Listing[]
+  /** Second and later runs on the same date (runs/YYYY-MM-DD-N.json); absent for the first run of a day. */
+  seq?: number
 }
 
 export interface SiteData {

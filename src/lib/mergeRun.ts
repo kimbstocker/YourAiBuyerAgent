@@ -3,6 +3,8 @@ import { validateRun, type Listing, type ListingStatus, type SiteData } from './
 /** One run file dropped into runs/ by the scheduled house watch. See runs/README.md. */
 export interface RunFile {
   date: string
+  /** Sequence within the date, from the file name suffix (runs/YYYY-MM-DD-N.json); absent means 1. */
+  seq?: number
   label: string
   listings: Listing[]
   sitesChecked?: string[]
@@ -23,7 +25,7 @@ export interface StatusUpdate {
 
 export interface ApplyResult {
   data: SiteData
-  /** False when the run was already applied (same or older date). */
+  /** False when the run was already applied (same or older date and seq). */
   applied: boolean
   /** Listings appended to seen. */
   added: number
@@ -42,8 +44,15 @@ function toSeen(l: Listing): SeenListing {
  * its listings is appended to seen unless the url is already there. Pure; the
  * input is not mutated.
  */
+/** True when run (date, seq) comes after latest (date, seq). */
+function isAfter(date: string, seq: number | undefined, latestDate: string, latestSeq: number | undefined): boolean {
+  return date > latestDate || (date === latestDate && (seq ?? 1) > (latestSeq ?? 1))
+}
+
 export function applyRun(input: SiteData, run: RunFile): ApplyResult {
-  if (run.date <= input.latestRun.date) return { data: input, applied: false, added: 0, updated: 0 }
+  if (!isAfter(run.date, run.seq, input.latestRun.date, input.latestRun.seq)) {
+    return { data: input, applied: false, added: 0, updated: 0 }
+  }
   const problems = validateRun(run.listings)
   const nums = run.listings.map((l) => l.num).sort((a, b) => a - b)
   if (nums.some((n, i) => n !== i + 1)) problems.push(`Listings must be numbered continuously from 1, got ${nums.join(', ')}`)
@@ -66,7 +75,12 @@ export function applyRun(input: SiteData, run: RunFile): ApplyResult {
   const additions = run.listings.filter((l) => !seenUrls.has(l.url)).map(toSeen)
   const data: SiteData = {
     ...input,
-    latestRun: { date: run.date, label: run.label, listings: run.listings.map((l) => ({ ...l })) },
+    latestRun: {
+      date: run.date,
+      ...(run.seq !== undefined ? { seq: run.seq } : {}),
+      label: run.label,
+      listings: run.listings.map((l) => ({ ...l })),
+    },
     seen: [...seen, ...(additions as Listing[])],
   }
   return { data, applied: true, added: additions.length, updated: updates.size }
@@ -90,7 +104,8 @@ export function formatSiteData(data: SiteData): string {
     const comma = i < entries.length - 1 ? ',' : ''
     if (key === 'latestRun') {
       const r = data.latestRun
-      return `  "latestRun": {\n    "date": ${j(r.date)},\n    "label": ${j(r.label)},\n    "listings": ${objArray(r.listings, '    ')}\n  }${comma}`
+      const seq = r.seq !== undefined ? `    "seq": ${j(r.seq)},\n` : ''
+      return `  "latestRun": {\n    "date": ${j(r.date)},\n${seq}    "label": ${j(r.label)},\n    "listings": ${objArray(r.listings, '    ')}\n  }${comma}`
     }
     if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object') {
       return `  ${j(key)}: ${objArray(value as object[], '  ')}${comma}`
@@ -100,12 +115,20 @@ export function formatSiteData(data: SiteData): string {
   return '{\n' + lines.join('\n') + '\n}\n'
 }
 
-/** Run files (runs/YYYY-MM-DD.json or YYYY-MM-DD-N.json) dated after the latest applied run, oldest first. */
-export function pendingRuns(paths: string[], latestDate: string): string[] {
+const RUN_FILE = /(\d{4}-\d{2}-\d{2})(?:-(\d+))?\.json$/
+
+/** Sequence number from a run file name's -N suffix (runs/2026-10-09-2.json gives 2); undefined without one. */
+export function runSeq(path: string): number | undefined {
+  const m = RUN_FILE.exec(path)
+  return m?.[2] === undefined ? undefined : Number(m[2])
+}
+
+/** Run files (runs/YYYY-MM-DD.json or YYYY-MM-DD-N.json) after the latest applied run's date and seq, oldest first. */
+export function pendingRuns(paths: string[], latestDate: string, latestSeq?: number): string[] {
   const dated = paths
-    .map((p) => ({ p, m: /(\d{4}-\d{2}-\d{2})(?:-(\d+))?\.json$/.exec(p) }))
-    .filter((x): x is { p: string; m: RegExpExecArray } => x.m !== null && x.m[1] > latestDate)
+    .map((p) => ({ p, m: RUN_FILE.exec(p) }))
+    .filter((x): x is { p: string; m: RegExpExecArray } => x.m !== null && isAfter(x.m[1], runSeq(x.p), latestDate, latestSeq))
   return dated
-    .sort((a, b) => a.m[1].localeCompare(b.m[1]) || Number(a.m[2] ?? 0) - Number(b.m[2] ?? 0))
+    .sort((a, b) => a.m[1].localeCompare(b.m[1]) || (runSeq(a.p) ?? 1) - (runSeq(b.p) ?? 1))
     .map((x) => x.p)
 }

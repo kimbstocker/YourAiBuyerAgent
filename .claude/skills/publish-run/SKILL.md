@@ -5,7 +5,7 @@ description: Publish new house watch run files. Use when a new runs/YYYY-MM-DD.j
 
 # Publish a house watch run
 
-The scheduled house watch never edits code. It writes one file per run into `runs/` (format in `runs/README.md`). This skill takes every run file newer than `latestRun.date` in `src/data/listings.json`, merges it, verifies, commits and pushes. Do not hand-edit `listings.json`; the merge is deterministic and covered by `src/lib/mergeRun.test.ts`.
+The scheduled house watch never edits code. It writes one file per run into `runs/` (format in `runs/README.md`). This skill takes every run file newer than the last applied run recorded in `latestRun` in `src/data/listings.json` (its `date`, and `seq` for a same-day `YYYY-MM-DD-N.json` second run), merges it, verifies, commits and pushes. Do not hand-edit `listings.json`; the merge is deterministic and covered by `src/lib/mergeRun.test.ts`.
 
 ## Steps
 
@@ -40,6 +40,6 @@ The scheduled house watch never edits code. It writes one file per run into `run
 
 - Never edit `src/data/listings.json` by hand or with an ad hoc script; always go through `scripts/merge-run.ts` so formatting and validation stay consistent.
 - Never modify a run file to make it merge unless the problem is obviously a data slip (a duplicate `num`, a missing `https://`); if the content itself looks wrong, ask.
-- Never re-apply a run whose date is not after `latestRun.date`; the script skips these on purpose.
+- Never re-apply a run that is not after the last applied one (by date, then by the `-N` file suffix for same-day runs); the script skips these on purpose.
 - Do not push anything except the data file and run files under this skill. Code changes go through the normal TDD workflow and their own commits.
 - If `git push` is rejected because main moved, `git pull --rebase origin main` and push again; the data file rarely conflicts, but if it does, rerun the merge from the pulled version rather than resolving by hand.

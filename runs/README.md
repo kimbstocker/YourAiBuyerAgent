@@ -41,8 +41,8 @@ Each Northern Beaches house watch run drops one file here: `runs/YYYY-MM-DD.json
 
 The `/publish-run` Claude Code skill (`.claude/skills/publish-run/SKILL.md`) drives `scripts/merge-run.ts`, which:
 
-1. Picks every file here dated after `latestRun.date` in `src/data/listings.json`, oldest first (`YYYY-MM-DD-2.json` sorts after `YYYY-MM-DD.json`).
-2. Sets `latestRun.date`, `latestRun.label` and `latestRun.listings` from the file.
+1. Picks every file here after the last applied run in `src/data/listings.json`, oldest first. A second run on the same day is named `YYYY-MM-DD-2.json` (then `-3` and so on); it sorts after `YYYY-MM-DD.json` and is applied once the first run of that day has been.
+2. Sets `latestRun.date`, `latestRun.label` and `latestRun.listings` from the file, plus `latestRun.seq` from the file name suffix when there is one.
 3. Applies every `statusUpdates` entry to the matching `seen` row (`status`, `soldPrice`, `statusChecked`, and `price` when given).
 4. Appends each listing to `seen` as `{group, address, bbc, price, agency, url}` unless its `url` is already present.
 5. Rewrites `listings.json` in its one-object-per-line format so the diff stays small.

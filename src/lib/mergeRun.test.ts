@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { applyRun, formatSiteData, pendingRuns, type RunFile } from './mergeRun'
+import { applyRun, formatSiteData, pendingRuns, runSeq, type RunFile } from './mergeRun'
 import type { SiteData, Listing } from './listings'
 
 const listing = (over: Partial<Listing> = {}): Listing => ({
@@ -81,6 +81,28 @@ describe('applyRun', () => {
     expect(applied).toBe(false)
   })
 
+  it('applies a second run on the same date when its seq is higher', () => {
+    const { data, applied } = applyRun(base(), run({ date: '2026-09-25', seq: 2 }))
+    expect(applied).toBe(true)
+    expect(data.latestRun.date).toBe('2026-09-25')
+    expect(data.latestRun.seq).toBe(2)
+  })
+
+  it('skips a same-date run whose seq is not higher than the applied one', () => {
+    const input = base()
+    input.latestRun.seq = 2
+    expect(applyRun(input, run({ date: '2026-09-25', seq: 2 })).applied).toBe(false)
+    expect(applyRun(input, run({ date: '2026-09-25' })).applied).toBe(false)
+  })
+
+  it('applies a later date after a same-date second run and drops the seq', () => {
+    const input = base()
+    input.latestRun.seq = 2
+    const { data, applied } = applyRun(input, run({ date: '2026-09-29' }))
+    expect(applied).toBe(true)
+    expect(data.latestRun.seq).toBeUndefined()
+  })
+
   it('accepts an empty run and still moves the run date forward', () => {
     const { data, applied, added } = applyRun(base(), run({ listings: [] }))
     expect(applied).toBe(true)
@@ -153,6 +175,14 @@ describe('formatSiteData', () => {
     expect(JSON.parse(formatSiteData(base()))).toEqual(base())
   })
 
+  it('writes the run seq on its own line and round-trips it', () => {
+    const data = base()
+    data.latestRun.seq = 2
+    const text = formatSiteData(data)
+    expect(text).toContain('    "date": "2026-09-25",\n    "seq": 2,\n')
+    expect(JSON.parse(text)).toEqual(data)
+  })
+
   it('writes an empty listings array inline', () => {
     const data = base()
     data.latestRun.listings = []
@@ -160,9 +190,22 @@ describe('formatSiteData', () => {
   })
 })
 
+describe('runSeq', () => {
+  it('reads the -N suffix from a run file name, defaulting to undefined', () => {
+    expect(runSeq('runs/2026-10-09-2.json')).toBe(2)
+    expect(runSeq('runs/2026-10-09.json')).toBeUndefined()
+  })
+})
+
 describe('pendingRuns', () => {
   it('returns run files newer than the latest applied date, oldest first', () => {
     const files = ['runs/2026-10-02.json', 'runs/README.md', 'runs/2026-09-29.json', 'runs/2026-09-25.json', 'runs/2026-10-02-2.json']
     expect(pendingRuns(files, '2026-09-29')).toEqual(['runs/2026-10-02.json', 'runs/2026-10-02-2.json'])
+  })
+
+  it('includes a same-date second run when only the first run of that date has been applied', () => {
+    const files = ['runs/2026-10-02.json', 'runs/2026-10-02-2.json', 'runs/2026-10-02-3.json']
+    expect(pendingRuns(files, '2026-10-02')).toEqual(['runs/2026-10-02-2.json', 'runs/2026-10-02-3.json'])
+    expect(pendingRuns(files, '2026-10-02', 2)).toEqual(['runs/2026-10-02-3.json'])
   })
 })

@@ -4,7 +4,7 @@
 //   --check   report what would change, write nothing (exit 1 if a run is pending)
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
-import { applyRun, formatSiteData, pendingRuns, type RunFile } from '../src/lib/mergeRun.ts'
+import { applyRun, formatSiteData, pendingRuns, runSeq, type RunFile } from '../src/lib/mergeRun.ts'
 import type { SiteData } from '../src/lib/listings.ts'
 
 const DATA = 'src/data/listings.json'
@@ -16,7 +16,7 @@ const explicit = args.filter((a) => !a.startsWith('--'))
 
 let data = JSON.parse(readFileSync(DATA, 'utf8')) as SiteData
 const candidates = explicit.length > 0 ? explicit : readdirSync(RUNS).map((f) => join(RUNS, f))
-const files = pendingRuns(candidates, data.latestRun.date)
+const files = pendingRuns(candidates, data.latestRun.date, data.latestRun.seq)
 
 if (files.length === 0) {
   console.log(`Nothing to merge: latest applied run is ${data.latestRun.date}.`)
@@ -26,9 +26,11 @@ if (files.length === 0) {
 let changed = false
 for (const file of files) {
   const run = JSON.parse(readFileSync(file, 'utf8')) as RunFile
+  const seq = runSeq(file)
+  if (seq !== undefined) run.seq = seq
   const result = applyRun(data, run)
   if (!result.applied) {
-    console.log(`Skip ${file}: ${run.date} is not after ${data.latestRun.date}.`)
+    console.log(`Skip ${file}: ${run.date}${seq ? ` run ${seq}` : ''} is not after ${data.latestRun.date}${data.latestRun.seq ? ` run ${data.latestRun.seq}` : ''}.`)
     continue
   }
   data = result.data
