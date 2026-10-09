@@ -1,0 +1,10 @@
+{
+ "date": "2026-10-08",
+ "label": "Thursday 8 October 2026",
+ "listings": [
+  {"num": 1, "group": "focus", "address": "103 Oliver Street, Freshwater", "bbc": "4/2/3", "price": "Undisclosed (Contact agent)", "agency": "McGrath", "url": "https://www.mcgrath.com.au/property/103-oliver-street-freshwater-nsw-2096-12P5242", "lat": -33.7713, "lng": 151.28529, "exact": true}
+ ],
+ "statusUpdates": [],
+ "sitesChecked": ["McGrath"],
+ "notes": "One-off first sweep of McGrath (added as agency 11 on 8 Oct 2026), not a full run. McGrath currently has one qualifying house in the target suburbs. 81 Cutler Rd Clontarf is co-listed by McGrath but already seen via MG.living. 41 Alexander St Manly (3/2, no car space listed, Contact Agent) and 3 Rolfe St Manly (semi, 3/1) did not meet the criteria."
+}

@@ -1,0 +1,230 @@
+{
+ "date": "2026-10-09",
+ "label": "Friday 9 October 2026",
+ "listings": [
+  {
+   "num": 1,
+   "group": "justOutside",
+   "address": "34 Aitken Avenue, Queenscliff",
+   "bbc": "6/3/1",
+   "price": "Undisclosed (Auction 24 Oct)",
+   "agency": "Ray White Northern Beaches",
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/queenscliff-2096/house/3591666",
+   "lat": -33.783339,
+   "lng": 151.284372,
+   "exact": true
+  }
+ ],
+ "statusUpdates": [
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/83-campbell-parade/",
+   "status": "sold",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/47-baringa-avenue/",
+   "status": "sold",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/2a-alto-avenue/",
+   "status": "available",
+   "price": "Auction guide $2,200,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/9-violet-street/",
+   "status": "available",
+   "price": "Auction guide $3,500,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/33-quinlan-parade/",
+   "status": "available",
+   "price": "Contact agent",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://clarkeandhumel.com.au/buying/for-sale/94-headland-road/",
+   "status": "available",
+   "price": "Contact agent",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p31503/",
+   "status": "available",
+   "price": "For sale",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p32220/",
+   "status": "available",
+   "price": "For sale guide $4,000,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-north-balgowlah-1p30037/",
+   "status": "available",
+   "price": "Auction guide $3,000,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-freshwater-1p19906/",
+   "status": "available",
+   "price": "For sale",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-heights-1p30239/",
+   "status": "available",
+   "price": "Auction 17 Oct",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p32387/",
+   "status": "available",
+   "price": "For sale guide $2,200,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-manly-vale-1p19909/",
+   "status": "available",
+   "price": "Auction",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-seaforth-1p31417/",
+   "status": "available",
+   "price": "For sale",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-north-curl-curl-1p31462/",
+   "status": "available",
+   "price": "Auction 24 Oct",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-heights-1p32581/",
+   "status": "available",
+   "price": "For sale",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.cunninghamsre.com.au/property/house-nsw-balgowlah-1p12675/",
+   "status": "available",
+   "price": "For sale",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/12-maretimo-street/1p8078",
+   "status": "available",
+   "price": "Guide $4,200,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/901-1-raglan-street/1p7807",
+   "status": "available",
+   "price": "Auction if not sold prior",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/12-thomas-street/1p8212",
+   "status": "available",
+   "price": "For sale $3,250,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/3-467-sydney-road/1p8203",
+   "status": "available",
+   "price": "Contact agent",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/127-frenchs-forest-road/1p8238",
+   "status": "available",
+   "price": "For sale guide $2,600,000",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/10-alma-street/1p8265",
+   "status": "available",
+   "price": "Auction guide $4,300,000 (10 Oct)",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/74-seaview-street/1p8248",
+   "status": "available",
+   "price": "Auction 31 Oct",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.whitehouserealestate.com.au/properties-for-sale/503-9-sylvan-avenue/1p8193",
+   "status": "available",
+   "price": "Contact agent",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/north-balgowlah-2093/house/3551116",
+   "status": "available",
+   "price": "Auction",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/freshwater-2096/house/3559699",
+   "status": "available",
+   "price": "Contact agent",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/fairlight-2094/apartment/3580837",
+   "status": "available",
+   "price": "Auction guide $1,750,000 (10 Oct)",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://raywhitenorthernbeaches.com.au/properties/residential-for-sale/nsw/seaforth-2092/house/3563136",
+   "status": "available",
+   "price": "Off market opportunity",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.schwarzre.com.au/property-listings/9-waiwera-avenue-north-manly/",
+   "status": "available",
+   "price": "For sale",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://theagency.com.au/property-apartment-nsw-manly-73101",
+   "status": "available",
+   "price": "Price on application",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://theagency.com.au/property-townhouse-nsw-fairlight-89356",
+   "status": "available",
+   "price": "Auction 31 Oct",
+   "checked": "2026-10-09"
+  },
+  {
+   "url": "https://www.mgliving.com.au/property?property_id=1738172/81-cutler-road-clontarf",
+   "status": "available",
+   "price": "Auction guide $6,500,000 (24 Oct)",
+   "checked": "2026-10-09"
+  }
+ ],
+ "sitesChecked": [
+  "Cunninghams",
+  "Clarke & Humel",
+  "Whitehouse",
+  "Ray White Northern Beaches",
+  "Schwarz",
+  "The Agency Northern Beaches",
+  "Shoreline Property",
+  "MG.living",
+  "Paris Property",
+  "Belle Property",
+  "McGrath"
+ ],
+ "notes": "Kim's Mac kept dropping off the bridge during this run (Chrome and device shell reachable only for a few seconds every few minutes), so: Belle Property could only be checked on page 1 of 10 (no new qualifying listings there) and its 32 seen listings were not status re-checked; Cunninghams seen listings were taken from the search pages rather than detail pages; 34 Aitken Avenue Queenscliff has no coordinates (lat/lng null, geocode before merging); no map. 4 Harbour View St Clontarf (withdrawn from Belle) is relisted by MG.living at $4,250,000, over budget. 83 Campbell Pde Manly Vale and 47 Baringa Ave Seaforth show as sold on Clarke & Humel, prices undisclosed on Domain."
+}
